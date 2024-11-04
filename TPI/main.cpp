@@ -1,11 +1,16 @@
 #include <iostream>
+#include <ctime>
+#include "funciones.h"
+#include "rlutil.h"
 
 using namespace std;
 
 int main()
 {
+    int vecDados[6];
     int opcion = 0;
-
+    int puntaje;
+    rlutil::setBackgroundColor(rlutil::MAGENTA);
     while (opcion != 4) {
         system("cls");
         cout << "------ MENU PRINCIPAL ------" << endl;
@@ -19,12 +24,21 @@ int main()
         switch(opcion) {
             case 1:
                 system("cls");
+                srand(time(0));
+                lanzarDados(vecDados);
+                mostrarDados(vecDados);
+                calcularPuntaje(vecDados);
+                system("pause");
                 break;
             case 2:
                 system("cls");
+                cout << "EN PROCESO..." << endl;
+                system("pause");
                 break;
             case 3:
                 system("cls");
+                cout << "EN PROCESO..." << endl;
+                system("pause");
                 break;
             case 4:
                 system("cls");
