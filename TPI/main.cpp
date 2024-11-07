@@ -24,10 +24,7 @@ int main()
         switch(opcion) {
             case 1:
                 system("cls");
-                srand(time(0));
-                lanzarDados(vecDados);
-                mostrarDados(vecDados);
-                calcularPuntaje(vecDados);
+                jugarUnJugador();
                 system("pause");
                 break;
             case 2:
