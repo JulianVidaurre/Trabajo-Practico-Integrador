@@ -9,7 +9,6 @@ int main()
 {
     int vecDados[6];
     int opcion = 0;
-    int puntaje;
     rlutil::setBackgroundColor(rlutil::MAGENTA);
     while (opcion != 4) {
         system("cls");

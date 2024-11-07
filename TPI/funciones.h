@@ -71,10 +71,12 @@ void jugarUnJugador() {
     string nombre;
     cout << "Ingrese su nombre: ";
     cin >> nombre;
-
+    int dados[6];
     int puntajeTotal = 0;
     int maxPuntajeRonda = 0;
     int ronda = 1;
+    int puntaje;
+    int i;
 
     srand(time(0));
 
@@ -82,19 +84,17 @@ void jugarUnJugador() {
 
         maxPuntajeRonda = 0;
 
-        for (int lanzamiento = 1; lanzamiento <= 3; ++lanzamiento) {
+        for (i = 1; i <= 3; ++i) {
             system("cls");
             cout << "TURNO DE " << nombre << " | RONDA N" << char(248) << " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotal << " PUNTOS" << endl;
             cout << "------------------------------------------------------------------" << endl;
             cout << "MAXIMO PUNTAJE DE LA RONDA: " << maxPuntajeRonda << " PUNTOS" << endl;
-            cout << "LANZAMIENTO N" << char(248) << " " << lanzamiento << endl;
+            cout << "LANZAMIENTO N" << char(248) << " " << i << endl;
             cout << "------------------------------------------------------------------" << endl;
             cout << endl;
-            int dados[6];
             lanzarDados(dados);
             mostrarDados(dados);
-
-            int puntaje = calcularPuntaje(dados);
+            puntaje = calcularPuntaje(dados);
             if (puntaje == 100) {
                 puntajeTotal = 100;
                 break;
