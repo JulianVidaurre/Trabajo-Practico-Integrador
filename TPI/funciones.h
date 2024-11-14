@@ -68,7 +68,23 @@ int calcularPuntaje(int vecDados[]) {
     return suma;
 }
 
-int jugarUnJugador() {
+void mostrarPantallaTurno(int ronda, const string& jugadorActual, int puntaje1, const string& nombre1, int puntaje2 = -1, const string& nombre2 = "") {
+    system("cls");
+
+    cout << "--------------------------------" << endl;
+    cout << "         RONDA N" << char(248) << " " << ronda << endl;
+    cout << "    PROXIMO TURNO: " << jugadorActual << endl;
+    cout << endl;
+    cout << "PUNTAJE " << nombre1 << ": " << puntaje1 << " PUNTOS" << endl;
+    if (puntaje2 != -1) {
+        cout << "PUNTAJE " << nombre2 << ": " << puntaje2 << " PUNTOS" << endl;
+    }
+    cout << "--------------------------------" << endl;
+    cout << "\nPRESIONAR UNA TECLA PARA CONTINUAR..." << endl;
+    rlutil::anykey();
+}
+
+int unJugador() {
     string nombre;
     cout << "Ingrese su nombre: ";
     cin >> nombre;
@@ -76,18 +92,15 @@ int jugarUnJugador() {
     int puntajeTotal = 0;
     int maxPuntajeRonda = 0;
     int ronda = 1;
-
     int i;
-
-    srand(time(0));
 
     while (puntajeTotal < 100) {
 
         maxPuntajeRonda = 0;
 
         for (i = 1; i <= 3; ++i) {
-
-            cout << "TURNO DE: " << nombre << " | RONDA N" << " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotal << " PUNTOS" << endl;
+            system("cls");
+            cout << "TURNO DE: " << nombre << " | RONDA N" << char(248) << " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotal << " PUNTOS" << endl;
             cout << "------------------------------------------------------------------" << endl;
             cout << "MAXIMO PUNTAJE DE LA RONDA: " << maxPuntajeRonda << " PUNTOS" << endl;
             cout << "LANZAMIENTO N" << char(248) << " " << i << endl;
@@ -116,13 +129,14 @@ int jugarUnJugador() {
         puntajeTotal += maxPuntajeRonda;
 
         if (puntajeTotal >= 100) {
-            cout << "FELICIDADES " << nombre << " , GANASTE LA PARTIDA CON: " << puntajeTotal << " PUNTOS EN:  " << ronda << " RONDAS!" << endl;
+            system("cls");
+            cout << "FELICIDADES " << nombre << "! GANASTE LA PARTIDA!" << endl;
+            cout << "PUNTAJE TOTAL: " << puntajeTotal << " PUNTOS" << endl;
+            cout << "NUMERO DE RONDAS: " << ronda << " RONDAS" << endl;
             break;
         }
-
+        mostrarPantallaTurno(ronda, nombre, puntajeTotal, nombre);
         ronda++;
-        rlutil::anykey("Presiona una tecla para continuar a la siguiente ronda...");
-        cout << endl;
     }
 
     return puntajeTotal;
@@ -130,11 +144,12 @@ int jugarUnJugador() {
 
 int dosJugadores(){
     string nombreJ1;
-    cout<< "Ingrese el nombre del primer jugador: ";
-    cin>>nombreJ1;
+    cout << "Ingrese el nombre del primer jugador: ";
+    cin >> nombreJ1;
+    system("cls");
     string nombreJ2;
-    cout<< "Ingrese el nombre del segundo jugador: ";
-    cin>>nombreJ2;
+    cout << "Ingrese el nombre del segundo jugador: ";
+    cin >> nombreJ2;
     int dadosJ1[6];
     int dadosJ2[6];
     int puntajeTotalJ1 = 0;
@@ -146,73 +161,79 @@ int dosJugadores(){
     int puntajej2;
     int i;
 
-    srand(time(0));
-
     while(puntajeTotalJ1 < 100 && puntajeTotalJ2 <100) {
         maxPuntajeRondaJ1 = 0;
 
         for(i = 1; i <= 3; ++i) {
-
-            cout<< "TURNO DE:  "<< nombreJ1 << " | RONDA N" <<  " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotalJ1 << "PUNTOS" << endl;
-            cout<< "-----------------------------------------------------------" << endl;
-            cout<< "MAXIMO PUNTAJE DE LA RONDA:" << maxPuntajeRondaJ1 << "PUNTOS" << endl;
-            cout<< "LANZAMIENTO N" <<  " " << i << endl;
-            cout<< "-----------------------------------------------------------" << endl;
-            cout<< endl;
+            system("cls");
+            cout << "TURNO DE: "<< nombreJ1 << " | RONDA N" << char(248) << " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotalJ1 << " PUNTOS" << endl;
+            cout << "-----------------------------------------------------------" << endl;
+            cout << "MAXIMO PUNTAJE DE LA RONDA: " << maxPuntajeRondaJ1 << " PUNTOS" << endl;
+            cout << "LANZAMIENTO N" << char(248) <<  " " << i << endl;
+            cout << "-----------------------------------------------------------" << endl;
+            cout << endl;
             lanzarDados(dadosJ1);
             mostrarDados(dadosJ1);
             puntajeJ1 = calcularPuntaje(dadosJ1);
-            if(puntajeJ1 == 100) {
+            if (puntajeJ1 == 100) {
                 puntajeTotalJ1 = 100;
                 break;
             } else {
-                if(puntajeJ1 > maxPuntajeRondaJ1) {
+                if (puntajeJ1 > maxPuntajeRondaJ1) {
                     maxPuntajeRondaJ1 = puntajeJ1;
                  }
-           }
-           cout << endl;
-           rlutil::anykey("Presione una tecla para ver el siguiente lanzamiento...");
-           cout<< endl;
+            }
+            cout << endl;
+            rlutil::anykey("Presione una tecla para ver el siguiente lanzamiento...");
+            cout << endl;
 
         }
 
         puntajeTotalJ1 += maxPuntajeRondaJ1;
-
+        mostrarPantallaTurno(ronda, nombreJ2, puntajeTotalJ1, nombreJ1, puntajeTotalJ2, nombreJ2);
         maxPuntajeRondaJ2 = 0;
-        for(i = 1; i <= 3; ++i) {
 
-           cout<< "TURNO DE:  " << nombreJ2 << " | RONDA N: " <<  " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotalJ2 << "PUNTOS" << endl;
-           cout<< "------------------------------------------------------------" << endl;
-           cout<< "MAXIMO PUNTAJE DE LA RONDA:" << maxPuntajeRondaJ2 << "PUNTOS" << endl;
-           cout<< "LANZAMIENTO N" <<  " " << i << endl;
-           cout<< "------------------------------------------------------------" << endl;
-           cout<< endl;
-           lanzarDados(dadosJ2);
-           mostrarDados(dadosJ2);
-           puntajej2 = calcularPuntaje(dadosJ2);
-           if(puntajej2 == 100) {
-                puntajeTotalJ2 = 100;
-                break;
-           } else {
-               if(puntajej2 > maxPuntajeRondaJ2) {
-                    maxPuntajeRondaJ2 = puntajej2;
-               }
-           }
+        for(i = 1; i <= 3; ++i) {
+            system("cls");
+            cout << "TURNO DE: " << nombreJ2 << " | RONDA N" << char(248) << " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotalJ2 << " PUNTOS" << endl;
+            cout << "------------------------------------------------------------" << endl;
+            cout << "MAXIMO PUNTAJE DE LA RONDA: " << maxPuntajeRondaJ2 << " PUNTOS" << endl;
+            cout << "LANZAMIENTO N" << char(248) <<  " " << i << endl;
+            cout << "------------------------------------------------------------" << endl;
+            cout << endl;
+            lanzarDados(dadosJ2);
+            mostrarDados(dadosJ2);
+            puntajej2 = calcularPuntaje(dadosJ2);
+            if (puntajej2 == 100) {
+                 puntajeTotalJ2 = 100;
+                 break;
+            } else {
+                if(puntajej2 > maxPuntajeRondaJ2) {
+                     maxPuntajeRondaJ2 = puntajej2;
+                }
+            }
             cout << endl;
             rlutil::anykey("Presiona una tecla para ver el siguiente lanzamiento...");
-            cout<< endl;
+            cout << endl;
 
         }
 
         puntajeTotalJ2 += maxPuntajeRondaJ2;
+        mostrarPantallaTurno(ronda, nombreJ1, puntajeTotalJ1, nombreJ1, puntajeTotalJ2, nombreJ2);
 
         if (puntajeTotalJ1 >= 100) {
-            cout << "FELICIDADES " << nombreJ1 << " GANASTE LA PARTIDA CON:  " << puntajeTotalJ1 << " PUNTOS EN:  " << ronda << " RONDAS!" << endl;
+            system("cls");
+            cout << "FELICIDADES " << nombreJ1 << "! GANASTE LA PARTIDA!" << endl;
+            cout << "PUNTAJE TOTAL: " << puntajeTotalJ1 << " PUNTOS" << endl;
+            cout << "NUMERO DE RONDAS: " << ronda << " RONDAS" << endl;
             break;
         }
 
-        if(puntajeTotalJ2 >= 100) {
-            cout<< "FELICIDADES " << nombreJ2 << " GANASTE LA PARTIDA CON:  " << puntajej2 << "PUNTOS EN:  " << ronda << "RONDAS!" << endl;
+        if (puntajeTotalJ2 >= 100) {
+            system("cls");
+            cout << "FELICIDADES " << nombreJ2 << "! GANASTE LA PARTIDA!" << endl;
+            cout << "PUNTAJE TOTAL: " << puntajeTotalJ2 << " PUNTOS" << endl;
+            cout << "NUMERO DE RONDAS: " << ronda << " RONDAS" << endl;
             break;
         }
 
@@ -222,9 +243,9 @@ int dosJugadores(){
 
     }
 
-    if(puntajeTotalJ1 > puntajeTotalJ2){
+    if (puntajeTotalJ1 > puntajeTotalJ2) {
         return puntajeTotalJ1;
-    } else{
+    } else {
         return puntajeTotalJ2;
     }
 
