@@ -5,13 +5,15 @@
 
 using namespace std;
 
+
+
 int main()
 {
-    int vecDados[6];
+    int maxPuntaje = 0;
     int opcion = 0;
-    rlutil::setBackgroundColor(rlutil::MAGENTA);
+
     while (opcion != 4) {
-        system("cls");
+
         cout << "------ MENU PRINCIPAL ------" << endl;
         cout << "1. UN JUGADOR" << endl;
         cout << "2. DOS JUGADORES" << endl;
@@ -22,29 +24,38 @@ int main()
 
         switch(opcion) {
             case 1:
-                system("cls");
-                jugarUnJugador();
-                system("pause");
+
+                int puntaje1;
+                puntaje1 = jugarUnJugador();
+                if (puntaje1 > maxPuntaje) {
+                    maxPuntaje = puntaje1;
+                }
+
                 break;
             case 2:
-                system("cls");
-                cout << "EN PROCESO..." << endl;
-                system("pause");
+
+                int puntaje2;
+                puntaje2 = dosJugadores();
+                if (puntaje2 > maxPuntaje) {
+                    maxPuntaje = puntaje2;
+                }
+
                 break;
             case 3:
-                system("cls");
-                cout << "EN PROCESO..." << endl;
-                system("pause");
+                cout << "LA MAXIMA PUNTUACION ES " << maxPuntaje << endl;
+
                 break;
             case 4:
-                system("cls");
+
                 cout << "Gracias por jugar!" << endl;
+
                 break;
             default:
-                system("cls");
+
                 cout << "Opcion no valida. Intente de nuevo." << endl;
-                system("pause");
+
         }
     }
     return 0;
 }
+

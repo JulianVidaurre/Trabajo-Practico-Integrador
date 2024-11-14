@@ -29,3 +29,27 @@
 	<sys/types.h>
 	<sys/time.h>
 
+1731527919 source:/Users/maiacabral/Documents/GitHub/Trabajo-Practico-Integrador/TPI/main.cpp
+	<iostream>
+	<ctime>
+	"funciones.h"
+	"rlutil.h"
+
+1731547348 /Users/maiacabral/Documents/GitHub/Trabajo-Practico-Integrador/TPI/funciones.h
+	<iostream>
+	"rlutil.h"
+
+1730855071 /Users/maiacabral/Documents/GitHub/Trabajo-Practico-Integrador/TPI/rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
