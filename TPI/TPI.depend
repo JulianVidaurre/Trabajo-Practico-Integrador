@@ -29,13 +29,13 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1731527919 source:/Users/maiacabral/Documents/GitHub/Trabajo-Practico-Integrador/TPI/main.cpp
+1731640237 source:/Users/maiacabral/Documents/GitHub/Trabajo-Practico-Integrador/TPI/main.cpp
 	<iostream>
 	<ctime>
 	"funciones.h"
 	"rlutil.h"
 
-1731547348 /Users/maiacabral/Documents/GitHub/Trabajo-Practico-Integrador/TPI/funciones.h
+1731641540 /Users/maiacabral/Documents/GitHub/Trabajo-Practico-Integrador/TPI/funciones.h
 	<iostream>
 	"rlutil.h"
 
