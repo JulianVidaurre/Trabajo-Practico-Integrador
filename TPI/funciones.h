@@ -9,13 +9,13 @@ using namespace std;
 void lanzarDados(int vecDados[]) {
     int i;
     for (i = 0; i < 6; i++) {
-        int valDado = 0;
-        while(valDado < 1 | valDado > 6){
-            cout << "Ingreso valor dado del 1 al 6 numero " << (i + 1) << endl;
-            cin >> valDado;
-        }
-        vecDados[i] = valDado;
-        //vecDados[i] = rand() % 6 + 1;
+        //int valDado = 0;
+        //while(valDado < 1 | valDado > 6){
+        //    cout << "Ingreso valor dado del 1 al 6 numero " << (i + 1) << endl;
+        //    cin >> valDado;
+        //}
+        //vecDados[i] = valDado;
+        vecDados[i] = rand() % 6 + 1;
     }
 }
 
@@ -75,7 +75,7 @@ int calcularPuntaje(int vecDados[]) {
 }
 
 void mostrarPantallaTurno(int ronda, string jugadorActual, int puntaje1, string nombre1, int puntaje2 = -1, string nombre2 = "") {
-
+    system("cls");
     cout << "--------------------------------" << endl;
     cout << "         RONDA N" << char(248) << " " << ronda << endl;
     cout << "    PROXIMO TURNO: " << jugadorActual << endl;
@@ -104,6 +104,7 @@ int unJugador() {
         maxPuntajeRonda = 0;
 
         for (i = 1; i <= 3; ++i) {
+            system("cls");
             cout << "TURNO DE: " << nombre << " | RONDA N" << char(248) << " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotal << " PUNTOS" << endl;
             cout << "------------------------------------------------------------------" << endl;
             cout << "MAXIMO PUNTAJE DE LA RONDA: " << maxPuntajeRonda << " PUNTOS" << endl;
@@ -133,6 +134,7 @@ int unJugador() {
         puntajeTotal += maxPuntajeRonda;
 
         if (puntajeTotal >= 100) {
+            system("cls");
             cout << "FELICIDADES " << nombre << "! GANASTE LA PARTIDA!" << endl;
             cout << "PUNTAJE TOTAL: " << puntajeTotal << " PUNTOS" << endl;
             cout << "NUMERO DE RONDAS: " << ronda << " RONDAS" << endl;
@@ -149,7 +151,7 @@ int dosJugadores(){
     string nombreJ1;
     cout << "Ingrese el nombre del primer jugador: ";
     cin >> nombreJ1;
-
+    system("cls");
     string nombreJ2;
     cout << "Ingrese el nombre del segundo jugador: ";
     cin >> nombreJ2;
@@ -168,7 +170,7 @@ int dosJugadores(){
         maxPuntajeRondaJ1 = 0;
 
         for(i = 1; i <= 3; ++i) {
-
+            system("cls");
             cout << "TURNO DE: "<< nombreJ1 << " | RONDA N" << char(248) << " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotalJ1 << " PUNTOS" << endl;
             cout << "-----------------------------------------------------------" << endl;
             cout << "MAXIMO PUNTAJE DE LA RONDA: " << maxPuntajeRondaJ1 << " PUNTOS" << endl;
@@ -197,6 +199,7 @@ int dosJugadores(){
         maxPuntajeRondaJ2 = 0;
 
         for(i = 1; i <= 3; ++i) {
+            system("cls");
             cout << "TURNO DE: " << nombreJ2 << " | RONDA N" << char(248) << " " << ronda << " | PUNTAJE TOTAL: " << puntajeTotalJ2 << " PUNTOS" << endl;
             cout << "------------------------------------------------------------" << endl;
             cout << "MAXIMO PUNTAJE DE LA RONDA: " << maxPuntajeRondaJ2 << " PUNTOS" << endl;
@@ -224,7 +227,7 @@ int dosJugadores(){
         mostrarPantallaTurno(ronda, nombreJ1, puntajeTotalJ1, nombreJ1, puntajeTotalJ2, nombreJ2);
 
         if (puntajeTotalJ1 >= 100) {
-
+            system("cls");
             cout << "FELICIDADES " << nombreJ1 << "! GANASTE LA PARTIDA!" << endl;
             cout << "PUNTAJE TOTAL: " << puntajeTotalJ1 << " PUNTOS" << endl;
             cout << "NUMERO DE RONDAS: " << ronda << " RONDAS" << endl;
@@ -232,7 +235,7 @@ int dosJugadores(){
         }
 
         if (puntajeTotalJ2 >= 100) {
-
+            system("cls");
             cout << "FELICIDADES " << nombreJ2 << "! GANASTE LA PARTIDA!" << endl;
             cout << "PUNTAJE TOTAL: " << puntajeTotalJ2 << " PUNTOS" << endl;
             cout << "NUMERO DE RONDAS: " << ronda << " RONDAS" << endl;

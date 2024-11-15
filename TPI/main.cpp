@@ -12,7 +12,7 @@ int main() {
     int opcion = 0;
 
     while (opcion != 4) {
-
+        system("cls");
         cout << "------ MENU PRINCIPAL ------" << endl;
         cout << "1. UN JUGADOR" << endl;
         cout << "2. DOS JUGADORES" << endl;
@@ -23,7 +23,7 @@ int main() {
 
         switch(opcion) {
             case 1:
-
+                system("cls");
                 int puntaje1;
                 puntaje1 = unJugador();
                 if (puntaje1 > maxPuntaje) {
@@ -32,7 +32,7 @@ int main() {
                 system("pause");
                 break;
             case 2:
-
+                system("cls");
                 int puntaje2;
                 puntaje2 = dosJugadores();
                 if (puntaje2 > maxPuntaje) {
@@ -41,7 +41,7 @@ int main() {
                 system("pause");
                 break;
             case 3:
-
+                system("cls");
                 if (maxPuntaje > 0) {
                     cout << "LA MAXIMA PUNTUACION ES " << maxPuntaje << " PUNTOS" << endl;
                 } else {
